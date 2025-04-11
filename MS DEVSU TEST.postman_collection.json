@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "7779c525-bd45-46d7-b1e9-809868d1e026",
+		"name": "MS DEVSU TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43991541",
+		"_collection_link": "https://carlosvargas-560762.postman.co/workspace/Carlos-Vargas's-Workspace~8631fbbc-621e-46c0-8942-e735169fc187/collection/43991541-7779c525-bd45-46d7-b1e9-809868d1e026?action=share&source=collection_link&creator=43991541"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Test\",\r\n    \"age\": 21,\r\n    \"phone\": \"+571213131221\",\r\n    \"gender\": \"MALE\",\r\n    \"status\": true,\r\n    \"address\": \"Carrera 17\",\r\n    \"password\": \"Carlos\",\r\n    \"identification\": \"12341217D\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/clients",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/clients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Test\",\r\n    \"age\": 29,\r\n    \"phone\": \"+571213131221\",\r\n    \"gender\": \"MALE\",\r\n    \"status\": true,\r\n    \"address\": \"Carrera 40\",\r\n    \"password\": \"Carlos\",\r\n    \"identification\": \"12341217D\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/clients/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Find All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"typeAccount\": \"SAVINGS\",\r\n    \"initialBalance\": 10000,\r\n    \"clientId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/accounts/0948944179",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"accounts",
+								"0948944179"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"item": [
+				{
+					"name": "Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/movements/statement?clientId=1&startDate=2025-04-10&endDate=2025-04-15",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"movements",
+								"statement"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "1"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-04-10"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-04-15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"movementType\": \"WITHDRAWAL\",\r\n    \"value\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/movements",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"movements"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2025-04-10",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-04-15",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
