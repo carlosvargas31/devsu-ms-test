@@ -1,0 +1,16 @@
+services:
+  mysql-test:
+    image: mysql:latest
+    container_name: account-db-test
+    environment:
+      MYSQL_DATABASE: accounts
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3309:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
