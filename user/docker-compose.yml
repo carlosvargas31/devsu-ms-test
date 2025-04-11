@@ -1,0 +1,39 @@
+services:
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/users
+      - SPRING_DATASOURCE_USERNAME=cavargas
+      - SPRING_DATASOURCE_PASSWORD=cavargas
+    networks:
+      - devsu-microservices-network
+  mysql:
+    image: mysql:latest
+    container_name: user-db
+    environment:
+      MYSQL_DATABASE: users
+      MYSQL_USER: cavargas
+      MYSQL_PASSWORD: cavargas
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - devsu-microservices-network
+
+networks:
+  devsu-microservices-network:
+    external: true
+    name: my-shared-network
